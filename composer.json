@@ -1,0 +1,29 @@
+{
+    "name": "ragebee/provider",
+    "description": "Game Platform Providers.",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://ragebee.bet777.club"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "laravel/framework": "^8.0",
+        "ragebee/fishpond": "^1.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ragebee\\Provider\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
+}
