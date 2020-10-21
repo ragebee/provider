@@ -10,7 +10,11 @@
     "require": {
         "php": "^7.3",
         "laravel/framework": "^8.0",
-        "ragebee/fishpond": "^1.0@dev"
+        "ragebee/fishpond": "1.x-dev",
+        "graham-campbell/guzzle-factory": "^3",
+        "guzzlehttp/guzzle": "^6.5",
+        "nesbot/carbon": "^2.29",
+        "phpoffice/phpspreadsheet": "^1.10"
     },
     "autoload": {
         "psr-4": {
