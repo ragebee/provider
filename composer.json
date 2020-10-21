@@ -11,7 +11,7 @@
         "php": "^7.3",
         "laravel/framework": "^8.0",
         "ragebee/fishpond": "dev-master",
-        "graham-campbell/guzzle-factory": "^3",
+        "graham-campbell/guzzle-factory": "^4.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "nesbot/carbon": "^2.29",
         "phpoffice/phpspreadsheet": "^1.10"
