@@ -4,7 +4,6 @@ namespace Ragebee\Provider\Cq9Seamless;
 
 use Carbon\Carbon;
 use DateTime;
-use FishpondServices\Cq9SlotSeamless\Cq9SlotSeamlessClient;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Ragebee\FishpondRecord\BetRecordMethodTrait;
@@ -56,7 +55,7 @@ class Cq9SeamlessAdapter implements CanFetchRecords, CanNormalizeBetRecord, Auto
         'th_TH' => 'th',
     ];
 
-    public function __construct(Cq9SlotSeamlessClient $client)
+    public function __construct(Cq9SeamlessClient $client)
     {
         $this->client = $client;
     }
