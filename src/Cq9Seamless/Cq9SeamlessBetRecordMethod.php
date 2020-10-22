@@ -1,6 +1,6 @@
 <?php
 
-namespace FishpondServices\Cq9SlotSeamless;
+namespace Ragebee\Provider\Cq9Seamless;
 
 use Carbon\Carbon;
 use Ragebee\FishpondRecord\AbstractBetRecordMethod;
