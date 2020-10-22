@@ -17,7 +17,7 @@ use Ragebee\Fishpond\PlayerInterface;
 use Ragebee\Fishpond\Type;
 use Ragebee\Fishpond\TypeInterface;
 
-class Cq9SeamlessAdapter implements CanFetchRecords, CanNormalizeBetRecord, AbstractAutoCreatePlayerAdapter
+class Cq9SeamlessAdapter extends AbstractAutoCreatePlayerAdapter implements CanFetchRecords, CanNormalizeBetRecord
 {
     use BetRecordMethodTrait;
 
