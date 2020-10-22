@@ -8,9 +8,8 @@ use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Ragebee\FishpondRecord\BetRecordMethodTrait;
 use Ragebee\FishpondRecord\CanNormalizeBetRecord;
-use Ragebee\Fishpond\Adapter\AutoCreatePlayer;
+use Ragebee\Fishpond\Adapter\AbstractAutoCreatePlayerAdapter;
 use Ragebee\Fishpond\Adapter\CanFetchRecords;
-use Ragebee\Fishpond\Adapter\Polyfill\AutoCreatePlayerTrait;
 use Ragebee\Fishpond\Config;
 use Ragebee\Fishpond\Game;
 use Ragebee\Fishpond\GameInterface;
@@ -18,10 +17,9 @@ use Ragebee\Fishpond\PlayerInterface;
 use Ragebee\Fishpond\Type;
 use Ragebee\Fishpond\TypeInterface;
 
-class Cq9SeamlessAdapter implements CanFetchRecords, CanNormalizeBetRecord, AutoCreatePlayer
+class Cq9SeamlessAdapter implements CanFetchRecords, CanNormalizeBetRecord, AbstractAutoCreatePlayerAdapter
 {
     use BetRecordMethodTrait;
-    use AutoCreatePlayerTrait;
 
     /** @var Cq9SeamlessClient */
     protected $client;
