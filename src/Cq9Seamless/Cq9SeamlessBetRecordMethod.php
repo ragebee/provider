@@ -59,7 +59,7 @@ class Cq9SeamlessBetRecordMethod extends AbstractBetRecordMethod
 
     public function getValidBetAmount($betRecord): string
     {
-        return data_get($betRecord, 'validbet');
+        return data_get($betRecord, 'bet');
     }
 
     public function getPayment($betRecord): ?string
