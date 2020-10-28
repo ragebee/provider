@@ -21,6 +21,11 @@
             "Ragebee\\Provider\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Ragebee\\Provider\\Test\\": "tests"
+        }
+    },
     "config": {
         "sort-packages": true
     },
