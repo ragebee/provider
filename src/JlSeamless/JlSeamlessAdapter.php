@@ -176,7 +176,7 @@ class JlSeamlessAdapter implements CanFetchRecords, CanNormalizeBetRecord, AutoC
             $config->get('limit') ?? 500
         );
 
-        return data_get($response, 'Result');
+        return data_get($response, 'Data.Result');
     }
 
     protected function formatDateTime(DateTime $dt)
