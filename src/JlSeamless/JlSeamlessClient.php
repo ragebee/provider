@@ -95,7 +95,7 @@ class JlSeamlessClient
         ];
 
         return [
-            'Url' => $this->gameUrl . '/singleWallet/Login?' . http_build_query($parameters),
+            'Url' => $this->apiUrl . '/singleWallet/Login?' . http_build_query($parameters),
         ];
     }
 
