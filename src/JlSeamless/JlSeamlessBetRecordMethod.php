@@ -19,32 +19,32 @@ class JlSeamlessBetRecordMethod extends AbstractBetRecordMethod
 
     public function getCreatedAt($betRecord): ?Carbon
     {
-        return Carbon::parse(data_get($betRecord, 'bettime'));
+        return Carbon::parse(data_get($betRecord, 'WagersTime'), '+07:00');
     }
 
     public function getUpdatedAt($betRecord): ?Carbon
     {
-        return Carbon::parse(data_get($betRecord, 'endroundtime'));
+        return Carbon::parse(data_get($betRecord, 'PayoffTime'), '+07:00');
     }
 
     public function getBetId($betRecord): string
     {
-        return data_get($betRecord, 'round');
+        return data_get($betRecord, 'WagersId');
     }
 
     public function getRoundId($betRecord): string
     {
-        return data_get($betRecord, 'round');
+        return data_get($betRecord, 'WagersId');
     }
 
     public function getPlayerName($record): string
     {
-        return data_get($record, 'account');
+        return data_get($record, 'Account');
     }
 
     public function getGameCode($record): string
     {
-        return data_get($record, 'gamecode');
+        return data_get($record, 'GameId');
     }
 
     public function getStatus($record): int
@@ -54,17 +54,17 @@ class JlSeamlessBetRecordMethod extends AbstractBetRecordMethod
 
     public function getBetAmount($betRecord): string
     {
-        return data_get($betRecord, 'bet');
+        return data_get($betRecord, 'BetAmount');
     }
 
     public function getValidBetAmount($betRecord): string
     {
-        return data_get($betRecord, 'bet');
+        return data_get($betRecord, 'BetAmount');
     }
 
     public function getPayment($betRecord): ?string
     {
-        return data_get($betRecord, 'win');
+        return data_get($betRecord, 'PayoffAmount');
     }
 
     public function getWinloss($betRecord): ?string
