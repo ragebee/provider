@@ -74,9 +74,6 @@ class JlSeamlessClient
         $parameters['Key'] = $this->getKey($parameters);
 
         $response = $this->client->post($this->getEndpointUrl($this->apiUrl, 'GetGameList'), [
-            RequestOptions::HEADERS => [
-                'Authorization' => data_get($this->credentials, 'api_key'),
-            ],
             RequestOptions::FORM_PARAMS => $parameters,
         ]);
 
@@ -116,9 +113,6 @@ class JlSeamlessClient
         $parameters['Key'] = $this->getKey($parameters);
 
         $response = $this->client->post($this->getEndpointUrl($this->apiUrl, 'api1/KickMember'), [
-            RequestOptions::HEADERS => [
-                'Authorization' => data_get($this->credentials, 'api_key'),
-            ],
             RequestOptions::FORM_PARAMS => $parameters,
         ]);
 
@@ -134,8 +128,8 @@ class JlSeamlessClient
      */
     public function getBetRecord(string $startTime, string $endTime, int $page = 1, int $pagesize = 500)
     {
-        if ($pagesize < 500 || $pagesize > 20000) {
-            throw new InvalidArgumentException('Pagesize need > 500 and <= 20000. pagesize:' . $pagesize);
+        if ($pagesize < 500 || $pagesize > 10000) {
+            throw new InvalidArgumentException('Pagesize need > 500 and <= 10000. pagesize:' . $pagesize);
         }
 
         $parameters = [
@@ -149,9 +143,6 @@ class JlSeamlessClient
         $parameters['Key'] = $this->getKey($parameters);
 
         $response = $this->client->get($this->getEndpointUrl($this->apiUrl, 'GetBetRecordByTime'), [
-            RequestOptions::HEADERS => [
-                'Authorization' => data_get($this->credentials, 'api_key'),
-            ],
             RequestOptions::QUERY => $parameters,
         ]);
 

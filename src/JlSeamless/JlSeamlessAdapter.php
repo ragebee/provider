@@ -45,8 +45,8 @@ class JlSeamlessAdapter implements CanFetchRecords, CanNormalizeBetRecord, AutoC
     const SUCCESS_CODES = [0, 101];
 
     const LANGUAGES = [
-        'zh' => 'zh',
-        'en' => 'en',
+        'zh_CN' => 'zh-CN',
+        'en_US' => 'en-US',
     ];
 
     public function __construct(JlSeamlessClient $client)
