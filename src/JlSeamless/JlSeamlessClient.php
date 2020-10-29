@@ -92,10 +92,12 @@ class JlSeamlessClient
             'Token' => $token,
             'GameId' => $gameId,
             'Lang' => $lang,
+            'AgentId' => $this->credentials['agent_id'],
         ];
+        $parameters['Key'] = $this->getKey($parameters);
 
         return [
-            'Url' => $this->apiUrl . '/singleWallet/Login?' . http_build_query($parameters),
+            'Url' => $this->gameUrl . '/singleWallet/Login?' . http_build_query($parameters),
         ];
     }
 
