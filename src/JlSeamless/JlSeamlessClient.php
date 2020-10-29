@@ -97,7 +97,7 @@ class JlSeamlessClient
         $parameters['Key'] = $this->getKey($parameters);
 
         return [
-            'Url' => $this->gameUrl . '/singleWallet/Login?' . http_build_query($parameters),
+            'Url' => $this->apiUrl . '/singleWallet/Login?' . http_build_query($parameters),
         ];
     }
 
@@ -153,6 +153,6 @@ class JlSeamlessClient
 
     protected function getEndpointUrl(string $url, string $endpoint): string
     {
-        return "{$url}/{$endpoint}";
+        return "{$url}/api1/{$endpoint}";
     }
 }
