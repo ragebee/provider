@@ -105,8 +105,6 @@ class IcgSeamlessClient
             'pageSize' => $pagesize,
         ];
 
-        $parameters['Key'] = $this->getKey($parameters);
-
         $response = $this->client->get($this->getEndpointUrl($this->apiUrl, 'api/v1/profile/rounds'), [
             RequestOptions::QUERY => $parameters,
         ]);
