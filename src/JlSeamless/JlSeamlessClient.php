@@ -124,7 +124,8 @@ class JlSeamlessClient
     /**
      * 取得玩家下注紀錄
      *
-     * Time format: RFC3339 2018-10-18T05:47:51+05:00
+     * Time format: 2018-10-18T05:47:51
+     * Time zone: +07:00
      *
      * @return array|null
      */
