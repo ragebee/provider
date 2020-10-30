@@ -37,7 +37,7 @@ class IcgSeamlessClient
         $this->credentials = $args['credentials'];
     }
 
-    public function getGameList($lang = 'zh')
+    public function gameList($lang = 'zh')
     {
         $parameters = [
             'type' => 'slot',
