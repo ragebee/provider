@@ -11,7 +11,7 @@ use InvalidArgumentException;
 
 class IcgSeamlessClient
 {
-    const API_URL = 'https://uat-wb-api.jlfafafa2.com/api1/';
+    const API_URL = 'https://admin-stage.iconic-gaming.com/service';
 
     /** @var string */
     protected $apiUrl;
@@ -44,7 +44,7 @@ class IcgSeamlessClient
             'lang' => $lang,
         ];
 
-        $response = $this->client->GET($this->getEndpointUrl($this->apiUrl, '/api/v1/games'), [
+        $response = $this->client->GET($this->getEndpointUrl($this->apiUrl, 'api/v1/games'), [
             RequestOptions::HEADERS => [
                 'Authorization' => 'Bearer ' . $this->credentials['token'],
             ],
@@ -56,7 +56,7 @@ class IcgSeamlessClient
 
     public function createPlayer(Player $player): Result
     {
-        $response = $this->httpClient->post($this->apiUrl . '/api/v1/players', [
+        $response = $this->httpClient->post($this->apiUrl . 'api/v1/players', [
             RequestOptions::HEADERS => [
                 'Authorization' => 'Bearer ' . $this->credentials['token'],
             ],
@@ -107,7 +107,7 @@ class IcgSeamlessClient
 
         $parameters['Key'] = $this->getKey($parameters);
 
-        $response = $this->client->get($this->getEndpointUrl($this->apiUrl, '/api/v1/profile/rounds'), [
+        $response = $this->client->get($this->getEndpointUrl($this->apiUrl, 'api/v1/profile/rounds'), [
             RequestOptions::QUERY => $parameters,
         ]);
 
