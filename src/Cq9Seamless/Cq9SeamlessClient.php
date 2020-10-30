@@ -45,6 +45,7 @@ class Cq9SeamlessClient
             RequestOptions::HEADERS => [
                 'Authorization' => data_get($this->credentials, 'api_key'),
             ],
+            RequestOptions::VERIFY => false,
         ]);
 
         return json_decode($response->getBody(), true) ?: (string) $response->getBody();
