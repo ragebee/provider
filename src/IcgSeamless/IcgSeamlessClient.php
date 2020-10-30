@@ -8,6 +8,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
+use Ragebee\Fishpond\PlayerInterface;
 
 class IcgSeamlessClient
 {
@@ -54,7 +55,7 @@ class IcgSeamlessClient
         return json_decode($response->getBody(), true) ?: (string) $response->getBody();
     }
 
-    public function createPlayer(Player $player): Result
+    public function createPlayer(PlayerInterface $player): Result
     {
         $response = $this->httpClient->post($this->apiUrl . 'api/v1/players', [
             RequestOptions::HEADERS => [
