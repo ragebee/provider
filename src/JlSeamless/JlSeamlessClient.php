@@ -59,7 +59,9 @@ class JlSeamlessClient
 
     public function getKeyG()
     {
-        return md5(Carbon::now("-04:00")->format('ymd') . $this->credentials['agent_id'] . $this->credentials['agent_key']);
+        $dateString = Carbon::now("-04:00")->format('ymj');
+
+        return md5($dateString . $this->credentials['agent_id'] . $this->credentials['agent_key']);
     }
 
     /**
