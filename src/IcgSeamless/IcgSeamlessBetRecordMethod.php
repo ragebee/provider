@@ -44,7 +44,7 @@ class IcgSeamlessBetRecordMethod extends AbstractBetRecordMethod
 
     public function getGameCode($record): string
     {
-        return data_get($record, 'gameId');
+        return data_get($record, 'productId');
     }
 
     public function getStatus($record): int
