@@ -109,9 +109,9 @@ class IcgSeamlessAdapter implements CanFetchRecords, CanNormalizeBetRecord
             $player
         );
 
-        if (!in_array($response->getStatusCode(), self::SUCCESS_CODES)) {
-            return false;
-        }
+        // if (!in_array($response->getStatusCode(), self::SUCCESS_CODES)) {
+        //     return false;
+        // }
 
         return compact('player');
     }
