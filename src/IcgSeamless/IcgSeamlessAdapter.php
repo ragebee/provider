@@ -191,7 +191,7 @@ class IcgSeamlessAdapter implements CanFetchRecords, CanNormalizeBetRecord
             $config->get('limit') ?? 500
         );
 
-        return data_get($response, 'Data.Result', []);
+        return data_get($response, 'data', []);
     }
 
     protected function formatDateTime(DateTime $dt)
