@@ -49,7 +49,7 @@ class IcgSeamlessBetRecordMethod extends AbstractBetRecordMethod
 
     public function getStatus($record): int
     {
-        $status = data_get($betRecord, 'status');
+        $status = data_get($record, 'status');
 
         switch ($status) {
             case 'playing':
