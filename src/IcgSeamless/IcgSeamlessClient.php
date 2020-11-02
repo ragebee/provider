@@ -107,6 +107,9 @@ class IcgSeamlessClient
         ];
 
         $response = $this->client->get($this->getEndpointUrl($this->apiUrl, 'api/v1/profile/rounds'), [
+            RequestOptions::HEADERS => [
+                'Authorization' => 'Bearer ' . $this->credentials['token'],
+            ],
             RequestOptions::QUERY => $parameters,
         ]);
 
