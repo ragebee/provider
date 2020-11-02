@@ -55,7 +55,7 @@ class IcgSeamlessClient
         return json_decode($response->getBody(), true) ?: (string) $response->getBody();
     }
 
-    public function createPlayer(PlayerInterface $player): Result
+    public function createPlayer(PlayerInterface $player)
     {
         $response = $this->client->post($this->getEndpointUrl($this->apiUrl, 'api/v1/players'), [
             RequestOptions::HEADERS => [
