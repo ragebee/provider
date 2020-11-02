@@ -57,7 +57,7 @@ class IcgSeamlessClient
 
     public function createPlayer(PlayerInterface $player): Result
     {
-        $response = $this->client->post($this->getEndpointUrl($this->apiUrl . 'api/v1/players'), [
+        $response = $this->client->post($this->getEndpointUrl($this->apiUrl, 'api/v1/players'), [
             RequestOptions::HEADERS => [
                 'Authorization' => 'Bearer ' . $this->credentials['token'],
             ],
