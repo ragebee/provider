@@ -82,7 +82,7 @@ class IcgSeamlessClient
         ];
 
         return [
-            'Url' => $href . http_build_query($parameters),
+            'Url' => $href . '&' . http_build_query($parameters),
         ];
     }
 
