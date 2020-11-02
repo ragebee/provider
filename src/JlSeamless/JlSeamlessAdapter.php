@@ -181,6 +181,6 @@ class JlSeamlessAdapter implements CanFetchRecords, CanNormalizeBetRecord, AutoC
 
     protected function formatDateTime(DateTime $dt)
     {
-        return Carbon::instance($dt)->setTimezone("+07:00")->toDateTimeLocalString();
+        return Carbon::instance($dt)->setTimezone("-04:00")->toDateTimeLocalString();
     }
 }
