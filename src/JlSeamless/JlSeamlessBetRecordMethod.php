@@ -49,7 +49,7 @@ class JlSeamlessBetRecordMethod extends AbstractBetRecordMethod
 
     public function getStatus($record): int
     {
-        return BetRecordInterface::STATUS_COMPLETED;
+        return BetRecordInterface::STATUS_SETTLED;
     }
 
     public function getBetAmount($betRecord): string

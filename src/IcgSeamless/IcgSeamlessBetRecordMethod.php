@@ -53,13 +53,11 @@ class IcgSeamlessBetRecordMethod extends AbstractBetRecordMethod
 
         switch ($status) {
             case 'playing':
-                return BetRecordInterface::STATUS_ACTIVE;
+                return BetRecordInterface::STATUS_OPEN;
             case 'cancel':
-                return BetRecordInterface::STATUS_CANCEL;
+                return BetRecordInterface::STATUS_CANCELED;
             case 'finish':
-                return BetRecordInterface::STATUS_COMPLETED;
-            default:
-                return BetRecordInterface::STATUS_TO_BE_DETERMINED;
+                return BetRecordInterface::STATUS_SETTLED;
         }
     }
 
