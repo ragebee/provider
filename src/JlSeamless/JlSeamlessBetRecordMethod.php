@@ -47,7 +47,7 @@ class JlSeamlessBetRecordMethod extends AbstractBetRecordMethod
         return data_get($record, 'GameId');
     }
 
-    public function getStatus($record): int
+    public function getStatus($record): string
     {
         return BetRecordInterface::STATUS_SETTLED;
     }

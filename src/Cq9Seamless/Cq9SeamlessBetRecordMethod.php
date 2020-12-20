@@ -47,7 +47,7 @@ class Cq9SeamlessBetRecordMethod extends AbstractBetRecordMethod
         return data_get($record, 'gamecode');
     }
 
-    public function getStatus($record): int
+    public function getStatus($record): string
     {
         return BetRecordInterface::STATUS_SETTLED;
     }
