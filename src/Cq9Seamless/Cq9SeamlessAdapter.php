@@ -14,6 +14,7 @@ use Ragebee\Fishpond\Adapter\Polyfill\AutoCreatePlayerTrait;
 use Ragebee\Fishpond\Config;
 use Ragebee\Fishpond\Game;
 use Ragebee\Fishpond\GameInterface;
+use Ragebee\Fishpond\OperatorConstant;
 use Ragebee\Fishpond\PlayerInterface;
 use Ragebee\Fishpond\Type;
 use Ragebee\Fishpond\TypeInterface;
@@ -58,6 +59,14 @@ class Cq9SeamlessAdapter implements CanFetchRecords, CanNormalizeBetRecord, Auto
     public function __construct(Cq9SeamlessClient $client)
     {
         $this->client = $client;
+    }
+
+    public static function getRequiredCredentialsKeys()
+    {
+        return [
+            OperatorConstant::CONFIG_KEY_API_URL,
+            OperatorConstant::CONFIG_KEY_OPERATOR_TOKEN,
+        ];
     }
 
     /**

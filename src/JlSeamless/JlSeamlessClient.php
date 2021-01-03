@@ -9,6 +9,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
+use Ragebee\Fishpond\OperatorConstant;
 
 class JlSeamlessClient
 {
@@ -21,21 +22,21 @@ class JlSeamlessClient
     protected $client;
 
     /** @var array */
-    protected $credentials;
+    protected $config;
 
     /**
      * - api_url:
      *   (string)
-     * - credentials:
-     *   (array) an array of "agent_id", "agent_key" key.
+     * - config:
+     *   (array) an array.
      *
      * @param array $args
      */
     public function __construct(array $args)
     {
-        $this->apiUrl = $args['api_url'] ?? self::API_URL;
+        $this->apiUrl = $args['config'][OperatorConstant::CONFIG_KEY_API_URL] ?? self::API_URL;
         $this->client = $args['client'] ?? new GuzzleClient(['handler' => GuzzleFactory::handler()]);
-        $this->credentials = $args['credentials'];
+        $this->config = $args['config'];
     }
 
     public function getKey($request = [])
@@ -59,7 +60,9 @@ class JlSeamlessClient
 
     public function getKeyG()
     {
-        return md5(Carbon::now("-04:00")->format('ymj') . $this->credentials['agent_id'] . $this->credentials['agent_key']);
+        return md5(Carbon::now("-04:00")->format('ymj')
+            . $this->config[OperatorConstant::CONFIG_KEY_OPERATOR_NUMBER]
+            . $this->config[OperatorConstant::CONFIG_KEY_OPERATOR_TOKEN]);
     }
 
     /**
@@ -68,7 +71,7 @@ class JlSeamlessClient
     public function gameList()
     {
         $parameters = [
-            'AgentId' => $this->credentials['agent_id'],
+            'AgentId' => $this->config[OperatorConstant::CONFIG_KEY_OPERATOR_NUMBER],
         ];
 
         $parameters['Key'] = $this->getKey($parameters);
@@ -92,7 +95,7 @@ class JlSeamlessClient
             'Token' => $token,
             'GameId' => $gameId,
             'Lang' => $lang,
-            'AgentId' => $this->credentials['agent_id'],
+            'AgentId' => $this->config[OperatorConstant::CONFIG_KEY_OPERATOR_NUMBER],
         ];
         $parameters['Key'] = $this->getKey($parameters);
 
@@ -109,7 +112,7 @@ class JlSeamlessClient
     ) {
         $parameters = [
             'Account' => $account,
-            'AgentId' => $this->credentials['agent_id'],
+            'AgentId' => $this->config[OperatorConstant::CONFIG_KEY_OPERATOR_NUMBER],
         ];
 
         $parameters['Key'] = $this->getKey($parameters);
@@ -140,7 +143,7 @@ class JlSeamlessClient
             'EndTime' => $endTime,
             'Page' => (int) $page,
             'PageLimit' => (int) $pagesize,
-            'AgentId' => $this->credentials['agent_id'],
+            'AgentId' => $this->config[OperatorConstant::CONFIG_KEY_OPERATOR_NUMBER],
         ];
 
         $parameters['Key'] = $this->getKey($parameters);

@@ -7,6 +7,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
 use InvalidArgumentException;
+use Ragebee\Fishpond\OperatorConstant;
 
 class Cq9SeamlessClient
 {
@@ -19,21 +20,21 @@ class Cq9SeamlessClient
     protected $client;
 
     /** @var array */
-    protected $credentials;
+    protected $config;
 
     /**
      * - api_url:
      *   (string)
-     * - credentials:
-     *   (array) an array of "api_key" key.
+     * - config:
+     *   (array) an array.
      *
      * @param array $args
      */
     public function __construct(array $args)
     {
-        $this->apiUrl = $args['api_url'] ?? self::API_URL;
+        $this->apiUrl = $args['config'][OperatorConstant::CONFIG_KEY_API_URL] ?? self::API_URL;
         $this->client = $args['client'] ?? new GuzzleClient(['handler' => GuzzleFactory::handler()]);
-        $this->credentials = $args['credentials'];
+        $this->config = $args['config'];
     }
 
     /**
@@ -43,7 +44,7 @@ class Cq9SeamlessClient
     {
         $response = $this->client->get($this->getEndpointUrl($this->apiUrl, 'gameboy/game/list/cq9'), [
             RequestOptions::HEADERS => [
-                'Authorization' => data_get($this->credentials, 'api_key'),
+                'Authorization' => data_get($this->config, OperatorConstant::CONFIG_KEY_OPERATOR_TOKEN),
             ],
             RequestOptions::VERIFY => false,
         ]);
@@ -77,7 +78,7 @@ class Cq9SeamlessClient
 
         $response = $this->client->post($this->getEndpointUrl($this->apiUrl, 'gameboy/player/sw/gamelink'), [
             RequestOptions::HEADERS => [
-                'Authorization' => data_get($this->credentials, 'api_key'),
+                'Authorization' => data_get($this->config, OperatorConstant::CONFIG_KEY_OPERATOR_TOKEN),
             ],
             RequestOptions::FORM_PARAMS => $parameters,
         ]);
@@ -97,7 +98,7 @@ class Cq9SeamlessClient
 
         $response = $this->client->post($this->getEndpointUrl($this->apiUrl, 'gameboy/player/logout'), [
             RequestOptions::HEADERS => [
-                'Authorization' => data_get($this->credentials, 'api_key'),
+                'Authorization' => data_get($this->config, OperatorConstant::CONFIG_KEY_OPERATOR_TOKEN),
             ],
             RequestOptions::FORM_PARAMS => $parameters,
         ]);
@@ -127,7 +128,7 @@ class Cq9SeamlessClient
 
         $response = $this->client->get($this->getEndpointUrl($this->apiUrl, 'gameboy/order/view'), [
             RequestOptions::HEADERS => [
-                'Authorization' => data_get($this->credentials, 'api_key'),
+                'Authorization' => data_get($this->config, OperatorConstant::CONFIG_KEY_OPERATOR_TOKEN),
             ],
             RequestOptions::QUERY => $parameters,
             RequestOptions::VERIFY => false,

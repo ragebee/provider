@@ -8,6 +8,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
+use Ragebee\Fishpond\OperatorConstant;
 use Ragebee\Fishpond\PlayerInterface;
 
 class IcgSeamlessClient
@@ -21,21 +22,21 @@ class IcgSeamlessClient
     protected $client;
 
     /** @var array */
-    protected $credentials;
+    protected $config;
 
     /**
      * - api_url:
      *   (string)
-     * - credentials:
+     * - config:
      *   (array) an array of "agent_id", "agent_key" key.
      *
      * @param array $args
      */
     public function __construct(array $args)
     {
-        $this->apiUrl = $args['api_url'] ?? self::API_URL;
+        $this->apiUrl = $args['config'][OperatorConstant::CONFIG_KEY_API_URL] ?? self::API_URL;
         $this->client = $args['client'] ?? new GuzzleClient(['handler' => GuzzleFactory::handler()]);
-        $this->credentials = $args['credentials'];
+        $this->config = $args['config'];
     }
 
     public function gameList($lang = 'zh')
@@ -47,7 +48,7 @@ class IcgSeamlessClient
 
         $response = $this->client->GET($this->getEndpointUrl($this->apiUrl, 'api/v1/games'), [
             RequestOptions::HEADERS => [
-                'Authorization' => 'Bearer ' . $this->credentials['token'],
+                'Authorization' => 'Bearer ' . $this->config[OperatorConstant::CONFIG_KEY_OPERATOR_TOKEN],
             ],
             RequestOptions::QUERY => $parameters,
         ]);
@@ -59,7 +60,7 @@ class IcgSeamlessClient
     {
         $response = $this->client->post($this->getEndpointUrl($this->apiUrl, 'api/v1/players'), [
             RequestOptions::HEADERS => [
-                'Authorization' => 'Bearer ' . $this->credentials['token'],
+                'Authorization' => 'Bearer ' . $this->config[OperatorConstant::CONFIG_KEY_OPERATOR_TOKEN],
             ],
             RequestOptions::JSON => [
                 'username' => $player->name,
@@ -108,7 +109,7 @@ class IcgSeamlessClient
 
         $response = $this->client->get($this->getEndpointUrl($this->apiUrl, 'api/v1/profile/rounds'), [
             RequestOptions::HEADERS => [
-                'Authorization' => 'Bearer ' . $this->credentials['token'],
+                'Authorization' => 'Bearer ' . $this->config[OperatorConstant::CONFIG_KEY_OPERATOR_TOKEN],
             ],
             RequestOptions::QUERY => $parameters,
         ]);

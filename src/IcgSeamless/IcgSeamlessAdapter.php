@@ -12,6 +12,7 @@ use Ragebee\Fishpond\Adapter\CanFetchRecords;
 use Ragebee\Fishpond\Config;
 use Ragebee\Fishpond\Game;
 use Ragebee\Fishpond\GameInterface;
+use Ragebee\Fishpond\OperatorConstant;
 use Ragebee\Fishpond\PlayerInterface;
 use Ragebee\Fishpond\Type;
 use Ragebee\Fishpond\TypeInterface;
@@ -50,6 +51,15 @@ class IcgSeamlessAdapter implements CanFetchRecords, CanNormalizeBetRecord
     public function __construct(IcgSeamlessClient $client)
     {
         $this->client = $client;
+    }
+
+    public static function getRequiredCredentialsKeys()
+    {
+        return [
+            OperatorConstant::CONFIG_KEY_API_URL,
+            OperatorConstant::CONFIG_KEY_OPERATOR_NUMBER,
+            OperatorConstant::CONFIG_KEY_OPERATOR_TOKEN,
+        ];
     }
 
     /**
